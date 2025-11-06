@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Starward - Next-generation deterministic cloud emulator for blazing-fast local development, testing, and learning">
+    <meta name="keywords" content="cloud emulator, localstack alternative, aws local, deterministic testing, cloud development">
+    <meta name="author" content="Nick Scherbakov">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="⭐ Starward - Deterministic Cloud Emulator">
+    <meta property="og:description" content="Run cloud services locally with snapshot isolation, chaos hooks, and multi-cloud support—all in <60 seconds">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nickscherbakov.github.io/starward/">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="⭐ Starward - Deterministic Cloud Emulator">
+    <meta name="twitter:description" content="Run cloud services locally with snapshot isolation, chaos hooks, and multi-cloud support—all in <60 seconds">
+    
+    <title>⭐ Starward - Deterministic Cloud Emulator</title>
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="#" class="logo">
+                    <span class="logo-icon">⭐</span>
+                    <span class="logo-text">Starward</span>
+                </a>
+                <div class="nav-links">
+                    <a href="#features">Features</a>
+                    <a href="#quickstart">Quickstart</a>
+                    <a href="#demos">Demos</a>
+                    <a href="#architecture">Architecture</a>
+                    <a href="https://github.com/NickScherbakov/starward" target="_blank" class="btn-primary">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z"/>
+                        </svg>
+                        GitHub
+                    </a>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="stars"></div>
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    Next-generation cloud emulator
+                </div>
+                <h1 class="hero-title">
+                    <span class="gradient-text">Deterministic Cloud</span><br>
+                    at Lightning Speed
+                </h1>
+                <p class="hero-description">
+                    Run AWS, GCP, and Azure services locally with snapshot isolation, chaos hooks, 
+                    and parity tracking. Test in milliseconds, not minutes.
+                </p>
+                <div class="hero-cta">
+                    <a href="#quickstart" class="btn-hero btn-primary">
+                        Get Started
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/NickScherbakov/starward" target="_blank" class="btn-hero btn-secondary">
+                        View on GitHub
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">⚡ &lt;60s</div>
+                        <div class="stat-label">Start time</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">🔒 100%</div>
+                        <div class="stat-label">Deterministic</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">📊 12-22%</div>
+                        <div class="stat-label">API Coverage</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">💰 $0</div>
+                        <div class="stat-label">Cloud costs</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Section -->
+    <section class="why-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Starward?</h2>
+                <p>Built to surpass LocalStack with developer velocity and learning value</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card problem">
+                    <div class="why-icon">❌</div>
+                    <h3>The Problem</h3>
+                    <ul>
+                        <li>Cloud dev loops take minutes</li>
+                        <li>Flaky tests from non-deterministic state</li>
+                        <li>Rising cloud costs during development</li>
+                        <li>No visibility into API coverage gaps</li>
+                        <li>Learning cloud is trial-and-error</li>
+                    </ul>
+                </div>
+                <div class="why-card solution">
+                    <div class="why-icon">✨</div>
+                    <h3>Starward's Answer</h3>
+                    <ul>
+                        <li><strong>⚡ Instant local cloud</strong> - test in milliseconds</li>
+                        <li><strong>🔒 Deterministic by default</strong> - snapshot/replay</li>
+                        <li><strong>📊 Parity Radar</strong> - automated API tracking</li>
+                        <li><strong>🔌 Hot-reload plugins</strong> - inject chaos without restarts</li>
+                        <li><strong>🎓 Learning mode</strong> - auto-graded scenarios</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Core Features</h2>
+                <p>Everything you need for modern cloud development</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Blazing Fast</h3>
+                    <p>Start in &lt;60 seconds. P50 latency of 0.45ms for S3 operations—3.3x faster than alternatives.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Deterministic Testing</h3>
+                    <p>Snapshot/restore state in milliseconds. Time-travel for TTL tests. Seeded IDs for reproducibility.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Parity Radar</h3>
+                    <p>Automated tracking of API coverage vs AWS/GCP/Azure. Know exactly what's supported.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔌</div>
+                    <h3>Hot-Reload Plugins</h3>
+                    <p>Inject latency, failures, and IAM simulations without restarts. Python/YAML/JS support.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎓</div>
+                    <h3>Learning Mode</h3>
+                    <p>Auto-graded scenarios for teams to master cloud patterns. IAM, S3 security, chaos testing.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Cost Profiling</h3>
+                    <p>Forecast cloud spend from local metrics. See estimated costs before deploying.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Multi-Cloud</h3>
+                    <p>AWS, GCP, and Azure services. Unified interface for all major cloud providers.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Observability</h3>
+                    <p>OpenTelemetry traces per API call. Track latency, snapshot ID, and chaos events.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quickstart Section -->
+    <section id="quickstart" class="quickstart-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get Started in 60 Seconds</h2>
+                <p>Choose your preferred installation method</p>
+            </div>
+            <div class="quickstart-tabs">
+                <button class="tab-btn active" data-tab="docker">Docker</button>
+                <button class="tab-btn" data-tab="pip">Pip Install</button>
+                <button class="tab-btn" data-tab="source">From Source</button>
+            </div>
+            <div class="tab-content active" data-tab="docker">
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-lang">bash</span>
+                        <button class="copy-btn" data-copy="docker pull ghcr.io/nickscherbakov/starward:latest
+docker run -p 4566:4566 starward
+
+# Create a snapshot
+curl -X POST http://localhost:4566/snapshots
+
+# List snapshots
+curl http://localhost:4566/snapshots">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M5.5 4.5V2.5C5.5 1.94772 5.94772 1.5 6.5 1.5H13.5C14.0523 1.5 14.5 1.94772 14.5 2.5V9.5C14.5 10.0523 14.0523 10.5 13.5 10.5H11.5" stroke="currentColor" stroke-width="1.5"/>
+                                <rect x="1.5" y="5.5" width="8" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                            Copy
+                        </button>
+                    </div>
+                    <pre><code><span class="comment"># Pull and run (starts in &lt;60s)</span>
+docker pull ghcr.io/nickscherbakov/starward:latest
+docker run -p 4566:4566 starward
+
+<span class="comment"># Create a snapshot</span>
+curl -X POST http://localhost:4566/snapshots
+
+<span class="comment"># List snapshots</span>
+curl http://localhost:4566/snapshots</code></pre>
+                </div>
+            </div>
+            <div class="tab-content" data-tab="pip">
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-lang">bash</span>
+                        <button class="copy-btn" data-copy="pip install starward
+
+# Start server
+starward up
+
+# In another terminal
+starward status          # Check health
+starward snapshot        # Create snapshot
+starward parity          # View API coverage
+starward cost            # See profiling report
+
+# Stop server
+starward down">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M5.5 4.5V2.5C5.5 1.94772 5.94772 1.5 6.5 1.5H13.5C14.0523 1.5 14.5 1.94772 14.5 2.5V9.5C14.5 10.0523 14.0523 10.5 13.5 10.5H11.5" stroke="currentColor" stroke-width="1.5"/>
+                                <rect x="1.5" y="5.5" width="8" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                            Copy
+                        </button>
+                    </div>
+                    <pre><code><span class="comment"># Install</span>
+pip install starward
+
+<span class="comment"># Start server</span>
+starward up
+
+<span class="comment"># In another terminal</span>
+starward status          <span class="comment"># Check health</span>
+starward snapshot        <span class="comment"># Create snapshot</span>
+starward parity          <span class="comment"># View API coverage</span>
+starward cost            <span class="comment"># See profiling report</span>
+
+<span class="comment"># Stop server</span>
+starward down</code></pre>
+                </div>
+            </div>
+            <div class="tab-content" data-tab="source">
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-lang">bash</span>
+                        <button class="copy-btn" data-copy="git clone https://github.com/NickScherbakov/starward.git
+cd starward
+
+# Install in dev mode
+pip install -e '.[dev]'
+
+# Run tests
+pytest -v
+
+# Start server
+starward up">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M5.5 4.5V2.5C5.5 1.94772 5.94772 1.5 6.5 1.5H13.5C14.0523 1.5 14.5 1.94772 14.5 2.5V9.5C14.5 10.0523 14.0523 10.5 13.5 10.5H11.5" stroke="currentColor" stroke-width="1.5"/>
+                                <rect x="1.5" y="5.5" width="8" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                            Copy
+                        </button>
+                    </div>
+                    <pre><code><span class="comment"># Clone</span>
+git clone https://github.com/NickScherbakov/starward.git
+cd starward
+
+<span class="comment"># Install in dev mode</span>
+pip install -e <span class="string">".[dev]"</span>
+
+<span class="comment"># Run tests</span>
+pytest -v
+
+<span class="comment"># Start server</span>
+starward up</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demos Section -->
+    <section id="demos" class="demos-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>See It in Action</h2>
+                <p>Real-world examples demonstrating Starward's capabilities</p>
+            </div>
+            <div class="demos-grid">
+                <div class="demo-card">
+                    <div class="demo-number">01</div>
+                    <h3>Terraform Migration</h3>
+                    <p>Test infrastructure changes locally without cloud costs. Create snapshots before risky changes and rollback instantly.</p>
+                    <div class="code-block small">
+                        <pre><code>starward up -d
+cd examples/terraform
+terraform apply  <span class="comment"># Provisions S3 bucket locally</span>
+
+starward snapshot --id before-migration
+terraform apply  <span class="comment"># Make changes</span>
+starward restore before-migration  <span class="comment"># Rollback</span></code></pre>
+                    </div>
+                    <div class="demo-benefit">
+                        <strong>Benefit:</strong> Iterate on Terraform without cloud API latency or costs.
+                    </div>
+                </div>
+                <div class="demo-card">
+                    <div class="demo-number">02</div>
+                    <h3>Chaos Engineering</h3>
+                    <p>Inject latency and failures to test timeout handling and retry logic. See real-time metrics and SLA impact.</p>
+                    <div class="code-block small">
+                        <pre><code>python examples/chaos_latency_test.py
+
+<span class="comment"># Output:</span>
+[CHAOS] Injecting 23.4ms latency into s3.create_bucket
+Operation  1:  24.12 ms
+[CHAOS] Injecting 47.8ms latency into s3.create_bucket
+Operation  2:  48.56 ms</code></pre>
+                    </div>
+                    <div class="demo-benefit">
+                        <strong>Benefit:</strong> Test resilience without touching production.
+                    </div>
+                </div>
+                <div class="demo-card">
+                    <div class="demo-number">03</div>
+                    <h3>IAM Training</h3>
+                    <p>Interactive scenarios with auto-grading. Learn cloud security in a safe, guided environment.</p>
+                    <div class="code-block small">
+                        <pre><code>starward learn run iam-basics
+
+<span class="comment"># Interactive walkthrough:</span>
+<span class="comment"># 1. Create IAM role</span>
+<span class="comment"># 2. Attach S3 read policy</span>
+<span class="comment"># 3. Test permissions</span>
+<span class="comment"># 4. Get instant feedback</span></code></pre>
+                    </div>
+                    <div class="demo-benefit">
+                        <strong>Benefit:</strong> Team onboarding to cloud IAM in minutes, not weeks.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture" class="architecture-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Architecture</h2>
+                <p>Built on modern Python with FastAPI and deterministic state management</p>
+            </div>
+            <div class="architecture-diagram">
+                <div class="arch-layer">
+                    <div class="arch-title">Starward Core</div>
+                    <div class="arch-components">
+                        <div class="arch-component">FastAPI Server (Port 4566)</div>
+                    </div>
+                </div>
+                <div class="arch-layer">
+                    <div class="arch-title">Core Systems</div>
+                    <div class="arch-components">
+                        <div class="arch-component">Event Bus</div>
+                        <div class="arch-component">State Engine</div>
+                        <div class="arch-component">Plugin Manager</div>
+                        <div class="arch-component">Service Registry</div>
+                    </div>
+                </div>
+                <div class="arch-layer">
+                    <div class="arch-title">Cloud Services</div>
+                    <div class="arch-components">
+                        <div class="arch-component">AWS: S3, SQS, Lambda, DynamoDB, IAM</div>
+                        <div class="arch-component">GCP: Storage, PubSub, Functions</div>
+                        <div class="arch-component">Azure: Blob, Queue, Functions</div>
+                    </div>
+                </div>
+                <div class="arch-layer">
+                    <div class="arch-title">Integrations</div>
+                    <div class="arch-components">
+                        <div class="arch-component">Terraform Provider</div>
+                        <div class="arch-component">AWS CDK Shim</div>
+                        <div class="arch-component">Serverless Framework</div>
+                        <div class="arch-component">OpenTelemetry</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benchmarks Section -->
+    <section class="benchmarks-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Performance</h2>
+                <p>Real numbers from production benchmarks</p>
+            </div>
+            <div class="benchmark-grid">
+                <div class="benchmark-card">
+                    <div class="benchmark-title">S3 Operations</div>
+                    <div class="benchmark-stats">
+                        <div class="benchmark-stat">
+                            <span class="stat-label">P50</span>
+                            <span class="stat-value highlight">0.45ms</span>
+                        </div>
+                        <div class="benchmark-stat">
+                            <span class="stat-label">P90</span>
+                            <span class="stat-value">0.89ms</span>
+                        </div>
+                        <div class="benchmark-stat">
+                            <span class="stat-label">P99</span>
+                            <span class="stat-value">1.2ms</span>
+                        </div>
+                    </div>
+                    <div class="benchmark-comparison">
+                        3.3x faster than LocalStack
+                    </div>
+                </div>
+                <div class="benchmark-card">
+                    <div class="benchmark-title">Snapshots</div>
+                    <div class="benchmark-stats">
+                        <div class="benchmark-stat">
+                            <span class="stat-label">Create</span>
+                            <span class="stat-value highlight">&lt;10ms</span>
+                        </div>
+                        <div class="benchmark-stat">
+                            <span class="stat-label">Restore</span>
+                            <span class="stat-value highlight">&lt;5ms</span>
+                        </div>
+                    </div>
+                    <div class="benchmark-comparison">
+                        Deterministic replay overhead: minimal
+                    </div>
+                </div>
+                <div class="benchmark-card">
+                    <div class="benchmark-title">Startup Time</div>
+                    <div class="benchmark-stats">
+                        <div class="benchmark-stat">
+                            <span class="stat-label">Docker</span>
+                            <span class="stat-value highlight">&lt;60s</span>
+                        </div>
+                        <div class="benchmark-stat">
+                            <span class="stat-label">Pip</span>
+                            <span class="stat-value highlight">&lt;30s</span>
+                        </div>
+                    </div>
+                    <div class="benchmark-comparison">
+                        Ready to use in seconds
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parity Section -->
+    <section class="parity-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>API Coverage (Parity Radar)</h2>
+                <p>Transparent tracking of supported operations vs cloud providers</p>
+            </div>
+            <div class="parity-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Operations</th>
+                            <th>Supported</th>
+                            <th>Coverage</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>AWS S3</strong></td>
+                            <td>120</td>
+                            <td>15</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 12.5%"></div>
+                                </div>
+                                <span class="progress-text">12.5%</span>
+                            </td>
+                            <td><span class="status-badge growing">🟡 Growing</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>AWS SQS</strong></td>
+                            <td>45</td>
+                            <td>10</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 22.2%"></div>
+                                </div>
+                                <span class="progress-text">22.2%</span>
+                            </td>
+                            <td><span class="status-badge stable">🟢 Stable</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>GCP Storage</strong></td>
+                            <td>100</td>
+                            <td>5</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 5%"></div>
+                                </div>
+                                <span class="progress-text">5.0%</span>
+                            </td>
+                            <td><span class="status-badge planned">🔴 Planned</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Azure Blob</strong></td>
+                            <td>95</td>
+                            <td>0</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                                <span class="progress-text">0.0%</span>
+                            </td>
+                            <td><span class="status-badge planned">🔴 Planned</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="parity-note">
+                Run <code>starward parity</code> to see missing operations and new cloud features
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="community-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Join the Community</h2>
+                <p>Help us build the future of cloud development</p>
+            </div>
+            <div class="community-grid">
+                <div class="community-card">
+                    <div class="community-icon">⭐</div>
+                    <h3>Star on GitHub</h3>
+                    <p>Show your support and stay updated with the latest releases</p>
+                    <a href="https://github.com/NickScherbakov/starward" target="_blank" class="btn-secondary">Star Now</a>
+                </div>
+                <div class="community-card">
+                    <div class="community-icon">🐛</div>
+                    <h3>Report Issues</h3>
+                    <p>Found a bug or have a feature request? Let us know!</p>
+                    <a href="https://github.com/NickScherbakov/starward/issues" target="_blank" class="btn-secondary">Open Issue</a>
+                </div>
+                <div class="community-card">
+                    <div class="community-icon">🔌</div>
+                    <h3>Build Plugins</h3>
+                    <p>Extend Starward with custom plugins for chaos, IAM, and more</p>
+                    <a href="https://github.com/NickScherbakov/starward#plugin-ecosystem" target="_blank" class="btn-secondary">Learn More</a>
+                </div>
+                <div class="community-card">
+                    <div class="community-icon">📖</div>
+                    <h3>Contribute</h3>
+                    <p>Help improve docs, add tests, or implement new cloud operations</p>
+                    <a href="https://github.com/NickScherbakov/starward/blob/main/CONTRIBUTING.md" target="_blank" class="btn-secondary">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Cloud Development?</h2>
+                <p>Start testing in milliseconds instead of minutes</p>
+                <div class="cta-buttons">
+                    <a href="#quickstart" class="btn-hero btn-primary">Get Started Now</a>
+                    <a href="https://github.com/NickScherbakov/starward" target="_blank" class="btn-hero btn-secondary">View Documentation</a>
+                </div>
+                <div class="cta-badge">
+                    <img src="https://img.shields.io/github/stars/NickScherbakov/starward?style=social" alt="GitHub stars">
+                    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT License">
+                    <img src="https://img.shields.io/badge/python-3.11+-blue.svg" alt="Python 3.11+">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-icon">⭐</span>
+                        <span class="logo-text">Starward</span>
+                    </div>
+                    <p>Next-generation deterministic cloud emulator</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="#features">Features</a>
+                        <a href="#quickstart">Quickstart</a>
+                        <a href="#demos">Demos</a>
+                        <a href="#architecture">Architecture</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="https://github.com/NickScherbakov/starward/blob/main/README.md" target="_blank">Documentation</a>
+                        <a href="https://github.com/NickScherbakov/starward/blob/main/ROADMAP.md" target="_blank">Roadmap</a>
+                        <a href="https://github.com/NickScherbakov/starward/blob/main/CONTRIBUTING.md" target="_blank">Contributing</a>
+                        <a href="https://github.com/NickScherbakov/starward/issues" target="_blank">Issues</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Community</h4>
+                        <a href="https://github.com/NickScherbakov/starward" target="_blank">GitHub</a>
+                        <a href="https://github.com/NickScherbakov/starward/discussions" target="_blank">Discussions</a>
+                        <a href="https://twitter.com/starward_dev" target="_blank">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Starward. Released under the MIT License.</p>
+                <p>Built with ❤️ by developers tired of slow cloud feedback loops.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

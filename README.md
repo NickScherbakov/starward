@@ -7,6 +7,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
 
+**[📖 View Landing Page](https://nickscherbakov.github.io/starward/)**
+
 **Starward** is built to surpass tools like LocalStack by focusing on **developer velocity**, **deterministic testing**, and **learning value**. Run cloud services locally with snapshot isolation, chaos hooks, parity tracking, and multi-cloud support—all in <60 seconds.
 
 ---
