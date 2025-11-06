@@ -1,0 +1,73 @@
+name: iam-basics
+title: "IAM Basics: Understanding Policies and Roles"
+difficulty: beginner
+duration: 30
+description: Learn fundamental IAM concepts through hands-on exercises
+
+objectives:
+  - Understand IAM policies and their structure
+  - Create and attach policies to roles
+  - Test permissions with different identities
+  - Recognize common security pitfalls
+
+steps:
+  - id: 1
+    title: "Create an IAM Role"
+    instructions: |
+      Create a new IAM role named 'app-role' with basic permissions.
+      Use the CLI or API to create the role.
+    verification:
+      type: api_call
+      service: iam
+      action: get_role
+      params:
+        role_name: app-role
+      expected: role_exists
+
+  - id: 2
+    title: "Attach S3 Read Policy"
+    instructions: |
+      Attach a policy to 'app-role' that allows reading from S3.
+      The policy should permit s3:GetObject and s3:ListBucket actions.
+    verification:
+      type: policy_check
+      role: app-role
+      required_actions:
+        - s3:GetObject
+        - s3:ListBucket
+
+  - id: 3
+    title: "Test Permissions"
+    instructions: |
+      Assume the 'app-role' and try to:
+      1. List objects in a bucket (should succeed)
+      2. Delete an object (should fail)
+    verification:
+      type: scenario_test
+      expected_outcomes:
+        list_success: true
+        delete_failure: true
+
+  - id: 4
+    title: "Identify Security Issue"
+    question: |
+      Review the following policy. What security issue does it have?
+      
+      {
+        "Effect": "Allow",
+        "Action": "*",
+        "Resource": "*"
+      }
+    answer: |
+      This policy grants full permissions to all resources, violating
+      the principle of least privilege. It should be scoped to specific
+      actions and resources needed for the role.
+    
+hints:
+  - "IAM policies use JSON format"
+  - "Always follow the principle of least privilege"
+  - "Test permissions after making changes"
+
+next_scenarios:
+  - s3-security
+  - iam-advanced

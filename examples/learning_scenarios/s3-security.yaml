@@ -1,0 +1,54 @@
+name: s3-security
+title: "S3 Security: Bucket Policies and Encryption"
+difficulty: intermediate
+duration: 45
+description: Master S3 security best practices
+
+objectives:
+  - Configure bucket policies correctly
+  - Enable encryption at rest
+  - Implement access logging
+  - Block public access
+
+steps:
+  - id: 1
+    title: "Create Secure Bucket"
+    instructions: |
+      Create an S3 bucket with:
+      - Block all public access enabled
+      - Versioning enabled
+      - Encryption at rest (AES256)
+    verification:
+      type: bucket_config_check
+      required_settings:
+        public_access_blocked: true
+        versioning: enabled
+        encryption: AES256
+
+  - id: 2
+    title: "Implement Bucket Policy"
+    instructions: |
+      Create a bucket policy that:
+      - Denies unencrypted uploads
+      - Requires HTTPS for all requests
+    verification:
+      type: policy_validation
+      test_cases:
+        - upload_without_encryption: denied
+        - http_request: denied
+        - https_encrypted_upload: allowed
+
+  - id: 3
+    title: "Exploit Scenario"
+    instructions: |
+      You have a bucket policy that seems secure but has a flaw.
+      Try to upload an object that bypasses the encryption requirement.
+      
+      Hint: Check the order of Deny vs Allow statements.
+    verification:
+      type: learning_check
+      requires_explanation: true
+
+next_scenarios:
+  - chaos-testing
+  - compliance-patterns

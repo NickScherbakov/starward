@@ -1,0 +1,14 @@
+{
+  "name": "starward-cdk-example",
+  "version": "1.0.0",
+  "description": "CDK example for Starward",
+  "main": "app.js",
+  "scripts": {
+    "deploy": "cdk deploy",
+    "destroy": "cdk destroy"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "^2.100.0",
+    "constructs": "^10.0.0"
+  }
+}
