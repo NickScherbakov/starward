@@ -1,0 +1,45 @@
+service: starward-serverless-example
+
+provider:
+  name: aws
+  runtime: python3.11
+  region: us-east-1
+  endpointType: REGIONAL
+
+  # Point to Starward
+  endpoint: http://localhost:4566
+  
+  environment:
+    BUCKET_NAME: ${self:custom.bucketName}
+    QUEUE_URL: ${self:custom.queueUrl}
+
+custom:
+  bucketName: serverless-starward-bucket
+  queueUrl: http://localhost:4566/queue/serverless-queue
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: hello
+          method: get
+
+  processQueue:
+    handler: handler.process_queue
+    events:
+      - sqs:
+          arn: arn:aws:sqs:us-east-1:000000000000:serverless-queue
+          batchSize: 10
+
+resources:
+  Resources:
+    StarwardBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:custom.bucketName}
+    
+    StarwardQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: serverless-queue
